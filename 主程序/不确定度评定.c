@@ -1,15 +1,6 @@
-/*********************************************************************
- This is a small program to calculate uncertainty,
- the current Version No.1.1.190303_alpha,
- its function is:
- 1) Calculate the combined uncertainty & relative uncertainty
-    of the direct measurement amount(no valid number can be retained);
- 2) Detect bad value and prompt the user to re-experiment;
- 3) Calculate the combined uncertainty of the indirect measurement amount.
- 
- Next version: Continue to improve the function of calculating the 
-               combined uncertainty of the indirect measurement amount.
-*********************************************************************/
+/**************************************************
+ This is a small program to calculate uncertainty
+***************************************************/
 
 
 #include <stdio.h>
@@ -24,7 +15,6 @@ double ur()
 	double aver=0, SE, sum=0, UA;
 	/*aver = the best estimate of the measured results
 	UA = uncertainty of A-class standard, SE = Systematic Error*/
-
 
 	printf("Enter the number of experiments:\n");
 	scanf("%d",&n);
@@ -191,20 +181,13 @@ double URN()
 	Ur_N = sqrt(sum);
 	return Ur_N;
 }
+
 int main()
 {
 	int i;
 	double Ur_N;
-	printf("Function Type?\n1)N=x/y or N=x*y\n2)N=x¡Ày\n3)N=kx(k is constant)\t[choose 1,2 or 3]\n");
-	scanf("%d",&i);
-	switch ( i )
-	{
-		case 1: Ur_N = URN();break;
-		case 2:
-		case 3: printf("I haven\'t get ready!");break;
-	}
-	Ur_N = Ur_N*100;
-	printf("\n\nUr_N = %.2f%%\n",Ur_N);
+	Ur_N = URN();
+	printf("\n\nUr_N = %.2f %%\n",Ur_N*100);
 	system("pause");
 	return 0;
 }
